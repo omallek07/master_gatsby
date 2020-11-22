@@ -1,1 +1,24 @@
-// This file is empty, but some people were reporting that it would not start unless they had an empty file. So here it is! You can delete the comment. Or replace it with your favourite shania twain lyrics.
+require('dotenv').config({
+  path: `.env`,
+});
+
+module.exports = {
+  siteMetadata: {
+    title: 'Master Gatsby',
+    siteUrl: 'https://localhost:8000',
+    description: 'Best Pizza Place Ever',
+  },
+  plugins: [
+    'gatsby-plugin-styled-components',
+    {
+      // Name the plugin you want to add options to
+      resolve: 'gatsby-source-sanity',
+      options: {
+        projectId: '9l7kwhia',
+        dataset: 'production',
+        watchMode: true,
+        token: process.env.SANITY_TOKEN,
+      },
+    },
+  ],
+};
