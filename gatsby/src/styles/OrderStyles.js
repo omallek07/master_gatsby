@@ -5,6 +5,13 @@ const OrderStyles = styled.form`
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   fieldset {
+    input,
+    label {
+      display: block;
+    }
+    input {
+      width: 50%;
+    }
     grid-column: span 2;
     max-height: 600px;
     overflow: auto;
