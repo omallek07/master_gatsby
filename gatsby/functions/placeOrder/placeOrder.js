@@ -33,8 +33,25 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// function wait(ms = 0) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(resolve, ms);
+//   });
+// }
+
 exports.handler = async (event, context) => {
+  // await wait(5000);
   const body = JSON.parse(event.body);
+  // Check if they have filled out the honeypot
+  if (body.mapleSyrup) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({
+        message: 'Boop beep bop zzzzst goodbye. ERR 34234',
+      }),
+    };
+  }
+
   // Validate the data coming in is correct
   const requiredFields = ['email', 'name', 'order'];
 
@@ -48,6 +65,17 @@ exports.handler = async (event, context) => {
       };
     }
   }
+
+  // Make sure there are actual orders
+  if (!body.order.length) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({
+        message: `Please add a pizza to your order.`,
+      }),
+    };
+  }
+
   // Send an email
   const info = await transporter.sendMail({
     from: "Slick's Slices <slick@example.com>",

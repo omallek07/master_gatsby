@@ -5,12 +5,16 @@ const OrderStyles = styled.form`
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   fieldset {
+    legend {
+      display: block;
+    }
     input,
     label {
       display: block;
     }
     input {
-      width: 50%;
+      width: 80%;
+      border: 1px solid var(--greyDark);
     }
     grid-column: span 2;
     max-height: 600px;
@@ -22,6 +26,9 @@ const OrderStyles = styled.form`
     &.menu {
       grid-column: span 1;
     }
+  }
+  .mapleSyrup {
+    display: none;
   }
   @media (max-width: 900px) {
     fieldset.menu,

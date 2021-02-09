@@ -31,11 +31,13 @@ export default function usePizza({ pizzas, values }) {
     setError(null);
     setMessage(null);
     // Gather all of the data
+    console.log('values', values);
     const body = {
       order: attachNamesAndPrices(order, pizzas),
       total: formatMoney(calculateOrderTotal(order, pizzas)),
       name: values.name,
       email: values.email,
+      mapleSyrup: values.mapleSyrup,
     };
     // 4. Send this data to a serverless function when they check out.
     const res = await fetch(

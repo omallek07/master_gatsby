@@ -9,6 +9,7 @@ const GlobalStyles = createGlobalStyle`
     --yellow: #ffc600;
     --white: #fff;
     --grey: #efefef;
+    --greyDark: #6a6c6e;
   }
   html {
     background-image: url(${bg});
@@ -80,7 +81,6 @@ const GlobalStyles = createGlobalStyle`
     position: relative;
     display: inline-block;
   }
-
 `;
 
 export default GlobalStyles;
